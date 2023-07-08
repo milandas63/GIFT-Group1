@@ -1,7 +1,7 @@
 # GIFT-Group1
 ## Group-1
-NO  NAME                        EMAIL-ID                        MOBILE
-1   Abinash Dash                abinashdash2022@gift.edu.in     7978825471
+###NO  NAME                        EMAIL-ID                        MOBILE
+###1   Abinash Dash                abinashdash2022@gift.edu.in     7978825471
 2   Abinash Panda               abinash2022@gift.edu.in         7735997679
 3   Aditya Sahoo                adityas2022@gift.edu.in         7873668660
 4   Amit Kumar Samal            amits2022@gift.edu.in           9348085991
