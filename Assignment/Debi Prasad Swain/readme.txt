@@ -1,9 +1,20 @@
-Data        Type	Size                	Description
+Reverse the given string
 
-byte      	1 byte	Stores               -128 to 127
 
-short      2 bytes	Stores          -32,768 to 32,767
 
-int       	4 bytes	Stores   -2,147,483,648 to 2,147,483,647
 
-long	      8 bytes	Stores  -9,223,372,036,854,775,808 to            9,223,372,036,854,775,807
+
+
+public class Reverse   
+{    
+    public static void main(String[] args) {    
+        String Tg = "Gandhi Institute For Technology";      
+        String reversedTg = " ";      
+        for(int i = Tg.length()-1; i >= 0; i--){    
+            reversedTg = reversedTg + Tg.charAt(i);    
+        }    
+            
+        System.out.println("Original string: " + Tg);    
+        System.out.println("Reverse of given string: " + reversedTg);    
+    }    
+}    
