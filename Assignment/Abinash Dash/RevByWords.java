@@ -18,7 +18,7 @@ public class RevByWords {
             }
             else{
                 Rev+=StrRev(Words)+" ";
-                //System.out.println(Rev);
+                
                 Words="";
             }
         }
@@ -29,7 +29,6 @@ public class RevByWords {
         for(int i=Str.length()-1;i>=0;i--){
             Rev+=Str.charAt(i);
         }
-        //System.out.println("In Reversing Function Returning : "+Rev);
         return Rev;
     }
 }
