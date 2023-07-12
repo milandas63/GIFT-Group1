@@ -1,4 +1,4 @@
-// PROGRAM TO COUNT 
+// PROGRAM TO COUNT VOWELS IN A STRING//
 public class vowel_count {
     public static void main (String[] args){
         String word = new String ();
