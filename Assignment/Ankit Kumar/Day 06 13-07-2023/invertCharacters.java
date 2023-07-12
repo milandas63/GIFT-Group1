@@ -33,6 +33,7 @@ public class invertCharacters {
 				str_new[i]=ch;
 			}
 		}
+		System.out.println("---------------------------------------");
 		System.out.println(str_new);
 		}
 	}
