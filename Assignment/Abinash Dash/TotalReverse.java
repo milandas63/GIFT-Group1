@@ -6,8 +6,7 @@ public class TotalReverse {
         BufferedReader Br = new BufferedReader(new InputStreamReader(System.in));
 
         System.out.print("Enter the String you want to reverse : ");
-
-        //String Sen=Br.readLine();
+        
         System.out.println("Reversed String : "+Rev(Br.readLine()));
     }
 
