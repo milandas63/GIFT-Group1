@@ -71,5 +71,5 @@ NO  NAME                        EMAIL-ID                        MOBILE
 34  Tushar Kumar Sahoo          tsahoo2022@gift.edu.in          8144030178
 
 35  Mohanty Hitesh Rabindranath mohanty2022@gift.edu.in         7205374495
-36 Anubhav Sengupta 
+ 36 Anubhav Sengupta 
 anubhav.sengupta2005@gmail.com  7008781007
