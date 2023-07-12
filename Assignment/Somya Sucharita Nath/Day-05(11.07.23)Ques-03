@@ -1,0 +1,19 @@
+Reverse each word within a string.
+class ReverseEachwords{
+ public static void main(string[]args){
+  string str="Gandhi Institute for Technology";
+   string[] words=str.split("");
+     string revstring="";
+  for(int i=0;i<words.length;i++)
+  {
+    string word=words[i];
+    string revword="";
+     for(int j=word.length()-1;j>=0;j--)
+     {
+       revword= revword+word.charAt(j);
+       }
+        revstring=revstring+reword+"";
+        }
+        system.out.println(revstring);
+        }
+      }
