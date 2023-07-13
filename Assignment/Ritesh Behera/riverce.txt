@@ -1,0 +1,22 @@
+import java.util.StringTokenizer;
+ 
+public class ReverseLine {
+ 
+ public static void main(String[] args) {
+ 
+ String strLine = "GANDHI INSTITUTE FOR TECHNOLOGY";
+ 
+ 
+ StringTokenizer st = new StringTokenizer(strLine, " ");
+ 
+ String strReversedLine = "";
+ 
+ while(st.hasMoreTokens())
+ {
+ strReversedLine = st.nextToken() + " " + strReversedLine;
+ }
+ 
+ System.out.println("Reversed string by word is : " + strReversedLine);
+ }
+}
+ 
