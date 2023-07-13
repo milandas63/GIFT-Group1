@@ -1,0 +1,18 @@
+/*using stringTokenizer class,WAP to reverse
+the words in a given string */
+import java.util.stringTokenizer;
+
+public class ReverseLine{
+
+public static void main( string[]args){
+string strLine="God is omnipotent and omniscient";
+stringTokenizer st= new stringTokenizer(strLine," ");
+string strReversedLine=" ";
+while(st.hasmoreTokens())
+{
+strReversedLine=st.nextToken()+" "+strReversedLine;
+}
+system.out.println("God is omnipotent and omniscient:"
+                      +strReversedLine);
+}
+}
