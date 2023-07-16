@@ -1,5 +1,5 @@
 /*
-	d)	Draw a outline of a triangle using stars?
+		Draw a outline of a triangle using stars?
 				         *         
 				        * *        
 				       *   *       
