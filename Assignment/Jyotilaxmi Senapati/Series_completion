@@ -1,0 +1,21 @@
+public class NumberSeries {
+    public static void main(String[] args) {
+        int SJ = 10; 
+        int Tg = 0; 
+        for (int i = 1; i <= SJ; i++) {
+            if (i % 2 == 1) {
+                Tg = Tg * 2 + 1;
+            } else {
+                Tg = Tg * 2 - 1;
+            }
+
+            System.out.print(Tg + " ");
+        }
+    }
+}
+
+
+
+output:
+1 1 3 5 11 21 43 85 171 341
+[Program finished]
