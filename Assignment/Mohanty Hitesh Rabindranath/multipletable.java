@@ -1,7 +1,7 @@
 /* Print all multiplication tables from 2 to 10? Five tables are supposed to
         be arranged horizontally and subsequently five more in the next row horizontally
         and so on.
-     2 x  1 =   2   3 x  1 =   3   4 x  1 =   4   5 x  1 =   5   6 x  1 =   6  
+      2 x  1 =   2   3 x  1 =   3   4 x  1 =   4   5 x  1 =   5   6 x  1 =   6  
       2 x  2 =   4   3 x  2 =   6   4 x  2 =   8   5 x  2 =  10   6 x  2 =  12  
       2 x  3 =   6   3 x  3 =   9   4 x  3 =  12   5 x  3 =  15   6 x  3 =  18  
       2 x  4 =   8   3 x  4 =  12   4 x  4 =  16   5 x  4 =  20   6 x  4 =  24  
