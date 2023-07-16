@@ -2,9 +2,7 @@ import java.io.*;
 
 public class RevOnlyWords{
     public static void main(String[] args)throws IOException{
-
-        /*InputStreamReader ISR= new InputStreamReader(System.in);
-        BufferedReader Br= new BufferedReader(ISR);*/
+        
         BufferedReader Br= new BufferedReader(new InputStreamReader(System.in));
 
         System.out.print("Enter the String : ");
@@ -19,7 +17,6 @@ public class RevOnlyWords{
             }
             else{
                 Reverse+=StrRev(Words)+" ";
-                //System.out.println("Reversed Word is found to be : "+Reverse);
                 Words="";
             }
         }
@@ -30,7 +27,6 @@ public class RevOnlyWords{
         for(int i=Str.length()-1;i>=0;i--){
             Rev+=Str.charAt(i);
         }
-        //System.out.println("In Reversing Function Returning : "+Rev);
         return Rev;
     }
 }
