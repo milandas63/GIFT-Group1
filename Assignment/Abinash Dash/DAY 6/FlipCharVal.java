@@ -5,7 +5,6 @@ public class FlipCharVal {
         BufferedReader Br= new BufferedReader(new InputStreamReader(System.in));
 
         System.out.print("Give the String : ");
-        //String StrB= new String(Br.readLine());
         char StrB[]=new String(Br.readLine()).toCharArray();
 
         for(int i=0;i<StrB.length;i++){
