@@ -1,0 +1,32 @@
+public class PerfectNumbers {
+    public static void main(String[] args) {
+        int Tg = 6; 
+        int end = 10000; 
+        System.out.println("Perfect numbers between " + Tg + " and " + end + ":");
+        for (int num = Tg; num <= end; num++) {
+            if (isPerfectNumber(num)) {
+                System.out.println(num);
+            }
+        }
+    }
+    public static boolean isPerfectNumber(int num) {
+        int sum = 0;
+        for (int i = 1; i <= num / 2; i++) {
+            if (num % i == 0) {
+                sum += i;
+            }
+        }
+        return sum == num;
+    }
+}
+
+
+
+OUTPUT:
+Perfect numbers between 6 and 10000:
+6
+28
+496
+8128
+
+[Program finished]
