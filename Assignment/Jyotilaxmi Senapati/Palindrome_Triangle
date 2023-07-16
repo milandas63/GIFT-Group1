@@ -1,0 +1,17 @@
+public class PalindromeTriangle {
+    public static void main(String[] args) {
+        int Tg = 5; 
+        for (int i = 1; i <= Tg; i++) {
+            for (int j = Tg- i; j >= 1; j--) {
+                System.out.print("  ");
+            }
+            for (char k = 'A'; k < 'A' + i; k++) {
+                System.out.print(k + " ");
+            }
+            for (char l = (char) ('A' + i - 2); l >= 'A'; l--) {
+                System.out.print(l + " ");
+            }
+            System.out.println(); 
+        }
+    }
+}
