@@ -1,6 +1,6 @@
 
 /*
-Write a program to reverse a String 
+      Write a program to reverse a String 
       Example: Gandhi Institute For Technology
       Result:  ygolonhceT roF etutitsnI ihdnaG
 */
