@@ -1,0 +1,24 @@
+public class ReverseWordsWithinString {
+    public static void main(String[] args) {
+        String Tg = "Gandhi Institute For Technology";
+        String[] words = Tg.split(" ");
+        StringBuilder reversedTg= new StringBuilder();
+        for (String word : words) {
+            StringBuilder reversedWord = new StringBuilder(word);
+            reversedWord.reverse(); 
+            reversedTg.append(reversedWord).append(" ");
+        }
+        reversedTg.deleteCharAt(reversedTg.length() - 1);
+
+        System.out.println("Original sentence: " + Tg);
+        System.out.println("Reversed sentence: " + reversedTg.toString());
+    }
+}
+
+
+
+OUTPUT:
+Original sentence: Gandhi Institute For Technology
+Reversed sentence: ihdnaG etutitsnI roF ygolonhceT
+
+[Program finished]
