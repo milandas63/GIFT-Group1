@@ -205,6 +205,8 @@ Day-09 (17-07-2023)
         |  |  |  |  +- NegativeAgeException
         |  |  |  |  +- ZeroAgeException
 
+        int[] ages = {36, 25, 11, 47, 61, -19, 77, 93, 72, 12, 15, 84};
+
     =   CLASSWORK
         Write a program to check for a valid username and password using the following
         user-defined classes:
@@ -220,6 +222,7 @@ Day-09 (17-07-2023)
             |  |  |  |  +- EmptyUsernameException
             |  |  |  |  +- EmptyPasswordException
 
+        String[] users { {"Teacher","milan"}, {"Gift","college"}, {"Language","java"},
+                         {"Animal","tiger"}, {"Student","gift"}, {"Session","second"} }; 
 
-        int[] ages = {36, 25, 11, 47, 61, -19, 77, 93, 72, 12, 15, 84};
 
