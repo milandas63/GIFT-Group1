@@ -205,5 +205,21 @@ Day-09 (17-07-2023)
         |  |  |  |  +- NegativeAgeException
         |  |  |  |  +- ZeroAgeException
 
+    =   CLASSWORK
+        Write a program to check for a valid username and password using the following
+        user-defined classes:
+
+            Object
+            +- Throwable
+            |  +- Exception
+            |  |  +- UserException
+            |  |  |  +- WrongUserException
+            |  |  |  |  +- WrongUsernameException
+            |  |  |  |  +- WrongPasswordException
+            |  |  |  +- InvalidUserException
+            |  |  |  |  +- EmptyUsernameException
+            |  |  |  |  +- EmptyPasswordException
+
+
         int[] ages = {36, 25, 11, 47, 61, -19, 77, 93, 72, 12, 15, 84};
 
