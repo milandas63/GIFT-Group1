@@ -13,7 +13,7 @@
  * 
 */
 
-public class Pyramid3 {
+public class pyramid_03 {
     public static void main(String[] args) {
         int spaces = 30;
         for (int i = 65; i <= 73; i++) {
