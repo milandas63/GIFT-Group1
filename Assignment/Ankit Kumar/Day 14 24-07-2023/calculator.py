@@ -1,0 +1,44 @@
+add = lambda x, y : x + y
+minus = lambda x, y : x - y
+multiply = lambda x, y : x * y
+divide = lambda x, y : x / y
+
+loop = True
+while(loop):
+    for i in range(0,5):
+        print()
+    print()
+    print("  Simple Calculator")
+    print()
+
+    text = ['1. Addition','2. Substraction','3. Multiplication','4. Division','5. Exit']
+    longest=0
+    for i in range(0,len(text)):
+        if(len(text[i])>longest):
+            longest=len(text[i])
+
+    total=longest+4
+    print('*'*(total))
+    for i in range(0,len(text)):
+        print('*',text[i],' '*(longest-len(text[i])),end='*\n')
+    print('*'*(total))
+    print()
+    action = input("What to do? ")
+    if action=='5':
+        print("Exited Successfully !")
+        break
+
+    first =  int(input("Enter first number:  "))
+    second = int(input("Enter second number: "))
+    if action=='1':
+        print(add(first, second))
+    elif action=='2':
+        print(minus(first, second))
+    elif action=='3':
+        print(multiply(first, second))
+    elif action=='4':
+        print(divide(first, second))
+
+    print()
+    print()
+    loop = input("More? [y/n] ")=='y'
