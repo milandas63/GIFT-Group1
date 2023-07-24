@@ -1,3 +1,8 @@
+""""
+Normal calculators
+
+"""
+
 import math
 
 def calculate_probability(mean, stddev, x_value):
