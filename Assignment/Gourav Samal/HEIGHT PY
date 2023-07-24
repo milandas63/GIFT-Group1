@@ -1,0 +1,6 @@
+//TAKE A HEIGHT FROM THE USER AND PRINT THE PYRAMID OF THE STARS//
+
+
+H=int(input("Height of the pyramid : "))
+for i in range(0,H):
+    print((str("*")*((2*i)+1)).rjust(H+i," "))
