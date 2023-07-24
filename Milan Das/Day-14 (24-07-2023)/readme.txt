@@ -34,4 +34,13 @@ Enter the second number: 5
 125
 
 
+CLASSWORK:
+Develop a project to perform the following calculators:
+    1.  Normal Calculator
+    2.  Age Calculator
+		3.  Temperature calculator
+		4.  Currency calculator
+		5.  Volume and Weight calculator
+		6.  Metric System calculator
 
+= Read the book on SQL Server 2000 -The Complete Reference uploaded in the Book section
