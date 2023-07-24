@@ -1,0 +1,7 @@
+def print_with_spaces(content):
+    result = " ".join(content)
+    print(result)
+
+if __name__ == "__main__":
+    input_content = input("Enter the content: ")
+    print_with_spaces(input_content)
