@@ -42,3 +42,5 @@ while(loop):
     print()
     print()
     loop = input("More? [y/n] ")=='y'
+    if(loop!=True):
+        print("Exited Successfully !")
