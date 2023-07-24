@@ -1,3 +1,22 @@
+>>> x = input("What is your name? ")
+What is your name? Milan Das
+>>> print(x)
+Milan Das
+>>> x = input("What is your name? ")
+What is your name? 55
+>>> x = input("The first number: ")
+The first number: 55
+>>> y = input("The second number: ")
+The second number: 45
+>>> x + y
+'5545'
+>>> a = int(x)
+>>> b = int(y)
+>>> a + b
+100
+
+
+
 Simple Calculator
 -----------------
 
