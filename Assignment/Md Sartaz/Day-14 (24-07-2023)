@@ -1,1 +1,37 @@
+import math
+
+def calculate_probability(mean, stddev, x_value):
+    z_score = (x_value - mean) / stddev
+    probability = 0.5 * (1 + math.erf(z_score / math.sqrt(2)))
+    return probability
+
+def calculate_x_value(mean, stddev, probability):
+    z_score = math.erfinv(2 * probability - 1) * math.sqrt(2)
+    x_value = mean + z_score * stddev
+    return x_value
+
+def main():
+    print("Normal Calculator")
+    print("1. Calculate Probability")
+    print("2. Calculate X Value")
+    
+    choice = int(input("Enter your choice (1 or 2): "))
+    
+    if choice == 1:
+        mean = float(input("Enter the mean: "))
+        stddev = float(input("Enter the standard deviation: "))
+        x_value = float(input("Enter the X-value: "))
+        probability = calculate_probability(mean, stddev, x_value)
+        print(f"The probability is: {probability:.4f}")
+    elif choice == 2:
+        mean = float(input("Enter the mean: "))
+        stddev = float(input("Enter the standard deviation: "))
+        probability = float(input("Enter the probability: "))
+        x_value = calculate_x_value(mean, stddev, probability)
+        print(f"The X-value is: {x_value:.4f}")
+    else:
+        print("Invalid choice. Please select 1 or 2.")
+
+if __name__ == "__main__":
+    main()
 
