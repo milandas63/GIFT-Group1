@@ -42,7 +42,7 @@ while(loop):
 	loop = input("More? [y/n] ")=='y'
 
 
-
+"""
 OUTPUT:
 Simple Calculator
 -----------------
@@ -112,4 +112,4 @@ Enter second number: 78
 
 
 More? [y/n] n
-> 
+"""
