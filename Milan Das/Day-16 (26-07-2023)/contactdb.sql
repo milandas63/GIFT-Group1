@@ -1,0 +1,69 @@
+DROP DATABASE IF EXISTS contactdb;
+CREATE DATABASE IF NOT EXISTS contactdb;
+USE contactdb;
+
+####################
+###   CATEGORY   ###
+####################
+SELECT "CATEGORY";
+DROP TABLE IF EXISTS category;
+CREATE TABLE IF NOT EXISTS category(
+	cat_id		INT(6)			NOT NULL AUTO_INCREMENT,
+	cat_name	VARCHAR(50)		NOT NULL UNIQUE,
+	PRIMARY KEY(cat_id)
+);
+INSERT INTO category VALUES
+	(1, "School Friend"),
+	(2, "College Friend"),
+	(3, "Professional Friend"),
+	(4, "Family Relatives"),
+	(5, "Blood Relation");
+
+####################
+###   LOCATION   ###
+####################
+SELECT "LOCATION";
+DROP TABLE IF EXISTS location;
+CREATE TABLE IF NOT EXISTS location(
+	loc_id		INT(6)			NOT NULL AUTO_INCREMENT,
+	loc_name	VARCHAR(50)		NOT NULL UNIQUE,
+	PRIMARY KEY(loc_id)
+);
+INSERT INTO location VALUES
+	(1, "Bhubaneswar"),
+	(2, "Cuttack"),
+	(3, "Mumbai"),
+	(4, "Chandigarh"),
+	(5, "Srinagar"),
+	(6, "Bangalore"),
+	(7, "Angul"),
+	(8, "USA");
+
+###################
+###   CONTACT   ###
+###################
+SELECT "CONTACT";
+DROP TABLE IF EXISTS contact;
+CREATE TABLE IF NOT EXISTS contact(
+	con_id		INT(6)			NOT NULL AUTO_INCREMENT,
+	con_name	VARCHAR(50)		NOT NULL UNIQUE,
+	gender		ENUM("M", "F")	DEFAULT NULL,
+	cat_id		INT(6)			NOT NULL REFERENCES category(cat_id),
+	loc_id		INT(6)			NOT NULL REFERENCES location(loc_id),
+	address		VARCHAR(150)	DEFAULT NULL,
+	pincode		VARCHAR(10)		DEFAULT NULL,
+	email_id1	VARCHAR(50)		DEFAULT NULL,
+	email_id2	VARCHAR(50)		DEFAULT NULL,
+	mobile_no1	VARCHAR(15)		NOT NULL,
+	mobile_no2	VARCHAR(15)		DEFAULT NULL,
+	mobile_no3	VARCHAR(15)		DEFAULT NULL,
+	mobile_no4	VARCHAR(15)		DEFAULT NULL,
+	PRIMARY KEY(con_id)
+);
+INSERT INTO contact VALUES
+	(1, "Milan Das", "M", 3, 1, "Bhubaneswar", "751024", "milandas63@gmail.com", NULL, "7978168568", NULL, NULL, NULL),
+	(2, "Somya Sucharita", "F", 2, 7, "Angul", "759001", "somyasucharita@gmail.com", NULL, "9778945547", NULL, NULL, NULL);
+
+SELECT c.con_id, c.con_name, c.gender, g.cat_name, l.loc_name, c.mobile_no1 FROM contact AS c
+LEFT JOIN category AS g ON c.cat_id=g.cat_id
+LEFT JOIN location AS l ON c.loc_id=l.loc_id;
