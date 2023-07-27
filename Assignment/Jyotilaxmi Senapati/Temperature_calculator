@@ -1,0 +1,37 @@
+celsius = lambda  celsius, fahrenheit:(celsius * 9/5) + 32
+
+fahrenheit = lambda celsius, fahrenheit:(fahrenheit - 32) * 5/9
+
+loop=True
+while(loop):
+    for i in range (0,0):
+        print()
+    print("<-------- Temperature Converter -------->") 
+    print() 
+    print("<--------------------------------------->")
+    print() 
+    print("1. Celsius to Fahrenheit")
+    print("2. Fahrenheit to Celsius")
+    print("3. EXIT")
+    print()
+    print("<--------------------------------------->")
+    print() 
+     
+    action = input("WHAT TO DO ? ")
+    if action=='3':
+        break
+    print() 
+    
+    first = int(input("ENTER TEMPERATURE IN CELSIUS: "))
+    print() 
+    second= int(input("ENTER TEMPERATURE IN FAHRENHEIT: "))
+    print() 
+
+    if action == '1':
+        print(celsius(first, second))
+    elif action == '2':
+        print(fahrenheit(first,second))
+    print()
+    print()
+    loop = input("MORE? [Y/N]  ")=='Y'
+    print()
