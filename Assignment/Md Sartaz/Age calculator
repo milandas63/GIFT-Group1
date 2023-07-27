@@ -1,1 +1,24 @@
+from datetime import date
 
+def calculate_age(birth_year, birth_month, birth_day):
+    today = date.today()
+    age = today.year - birth_year - ((today.month, today.day) < (birth_month, birth_day))
+    return age
+
+if __name__ == "__main__":
+    try:
+        birth_year = int(input("Enter your birth year : "))
+        birth_month = int(input("Enter your birth month : "))
+        birth_day = int(input("Enter your birth day : "))
+
+        if birth_month not in range(1, 13) or birth_day not in range(1, 32):
+            print("Invalid input for birth month or day.")
+        else:
+            age = calculate_age(birth_year, birth_month, birth_day)
+            if age >= 0:
+                print("Your age is:", age)
+            else:
+                print("Invalid birth date. Please make sure the date is in the past.")
+    except ValueError:
+        print("Invalid input. Please enter valid numbers for birth year, month, and day.")
+    
