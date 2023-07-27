@@ -1,0 +1,12 @@
+class Reversestring{
+  public static void main( string[]args){
+   string name="Gandhi Institute for Technology";
+   int leng=name.length();
+   string rev="";
+   for(int i=leng-1;i>=0;i++)
+   {
+       rev= rev+name.charAt(i);
+       }
+         system.out.println("Reverse of"+name+"is"+rev);
+         }
+        }
