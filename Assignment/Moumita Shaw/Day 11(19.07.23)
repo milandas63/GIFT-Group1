@@ -1,0 +1,25 @@
+"write a program to reverse a string"""
+ORIGINAL-"Quick brown fox jumps over the lazy dog"
+REVERSE-" "
+  for x in range(len(original)-1,-1,-1):
+     reverse= REVERSE+original[x]
+    print("ORIGINAL:"+"Quick brown fox jumps over lazy dog")
+      print("REVERSE:"reverse)
+       print()
+print("----------------Next---------------")
+
+ olist=original.split()
+   length=len(olist)
+   for i in range(length-1,-1,-1):
+    print(olist[i],end="")
+     print()
+print("--------------Next-------------")
+
+    for i in range(0,len(olist):
+      reverse=""
+       word=olist[i]
+        for j in range(len(word)-1,-1,-1):
+        REVERSE=reverse+word[j]
+      print(reverse,end="")
+      print()
+print("--------------------Next----------------")
