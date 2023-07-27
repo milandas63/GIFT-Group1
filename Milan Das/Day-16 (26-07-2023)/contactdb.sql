@@ -67,3 +67,9 @@ INSERT INTO contact VALUES
 SELECT c.con_id, c.con_name, c.gender, g.cat_name, l.loc_name, c.mobile_no1 FROM contact AS c
 LEFT JOIN category AS g ON c.cat_id=g.cat_id
 LEFT JOIN location AS l ON c.loc_id=l.loc_id;
+
+
+UPDATE contact SET con_name="MIlan Das" WHERE con_id=?
+
+DELETE TABLE contact WHERE con_id=?
+
