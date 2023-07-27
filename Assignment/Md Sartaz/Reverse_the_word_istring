@@ -1,1 +1,24 @@
+public class ReverseWords {
+    public static void main(String[] args) {
+        String Tg = "God is Omnipotent and Omniscient";
 
+        String[] words = Tg.split(" "); 
+
+        StringBuilder reversedTg = new StringBuilder();
+        for (int i = words.length - 1; i >= 0; i--) {
+            reversedTg.append(words[i]).append(" ");
+        }
+        reversedTg.deleteCharAt(reversedTg.length() - 1);
+
+        System.out.println("Original sentence: " + Tg);
+        System.out.println("Reversed sentence: " + reversedTg.toString());
+    }
+}
+
+
+
+OUTPUT:
+Original sentence: God is Omnipotent and Omniscient
+Reversed sentence: Omniscient and Omnipotent is God
+
+[Program finished]
