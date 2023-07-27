@@ -1,0 +1,30 @@
+*WAP to find all perfect numbers between 
+two given number*\
+import java.util.*;
+public class Numbers{
+  public static void main(string[]args)
+  {
+    scanner sc=new scanner(system.in);
+  system.out.println("Enter start and end range");
+     int num1=sc.nextInt();//6
+     int num2=sc.nextInt();//10000
+    system.out.println("perfect Numbers are:");
+      for(int i=num1;i<num2;i++)
+      {
+         int n=i;
+         int sum=0,factor=1;
+         while(factor<n)
+         {
+           if((n%factor)==0)
+           {
+           sum=sum+factor;
+           }
+             factor++;
+    }
+           if(sum==i)
+      {
+        system.out.println(i+" ");
+    }
+    }
+    }
+    }
