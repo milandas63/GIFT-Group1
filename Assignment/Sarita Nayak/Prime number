@@ -1,0 +1,12 @@
+a = 100
+b = 4000
+
+print("Prime numbers between", a, "and", b, "are:")
+
+for Tg in range(a, b + 1):
+   if Tg > 1:
+       for i in range(2, Tg):
+           if (num % i) == 0:
+               break
+       else:
+           print(Tg)
