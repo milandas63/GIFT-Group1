@@ -1,1 +1,666 @@
+package com.contact.main;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.Scanner;
+
+public class Contact {
+	public Connection conn;
+	public Statement stmt;
+	public ResultSet rs;
+	public ResultSetMetaData rsmd;
+	public Scanner scan;
+	
+	public Contact() {
+		try {
+			//	Step-1 Load and Register Driver
+			Class.forName("com.mysql.cj.jdbc.Driver");
+
+			// 	Step-2 Create Connection Object
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/contactdb", "root", "");
+
+			scan = new Scanner(System.in);
+			String choice = "0";
+			boolean yn = true;
+			while(yn) {
+				for(int i=0; i<10; i++) System.out.println();
+				System.out.println("MAIN MENU");
+				System.out.println("1. Category");
+				System.out.println("2. Location");
+				System.out.println("3. Contact");
+				System.out.println("4. Exit");
+				System.out.println();
+				System.out.print("Choice: ");
+				choice = scan.nextLine();
+				if(choice.equals("1")) {
+					new CategoryMenu(conn, scan);
+				} else if(choice.equals("2")) {
+					new LocationMenu(conn, scan);
+				} else if(choice.equals("3")) {
+					new ContactMenu(conn, scan);
+				} else if(choice.equals("4")) {
+					conn.close();
+					System.out.println("Thank you for using Contact App");
+					System.exit(0);
+				}
+			}
+			
+		} catch(ClassNotFoundException e) {
+		} catch(SQLException e) {
+		} catch(Exception e) {
+		} finally {
+			try {
+				//	Step-6 Close ResultSet, Statement and Connection
+				rs.close();
+				stmt.close();
+				conn.close();
+			} catch(SQLException e1) {
+			} catch(Exception e1) {
+			}
+		}
+	}
+	
+	public class CategoryMenu {
+		public CategoryMenu(Connection conn, Scanner scan) {
+			String choice;
+			boolean yn = true;
+			while(yn) {
+				for(int i=0; i<10; i++) System.out.println();
+				System.out.println("Category Menu");
+				System.out.println("1. Display");
+				System.out.println("2. Add New");
+				System.out.println("3. Update");
+				System.out.println("4. Delete");
+				System.out.println("5. Exit");
+				System.out.println();
+				System.out.print("Choice: ");
+				choice = scan.nextLine();
+				if(choice.equals("1")) {
+					new CategoryDisplay(conn, scan);
+				} else if(choice.equals("2")) {
+					new CategoryAddNew(conn, scan);
+				} else if(choice.equals("3")) {
+					new CategoryUpdate(conn, scan);
+				} else if(choice.equals("4")) {
+					new CategoryDelete(conn, scan);
+				} else if(choice.equals("5")) {
+					yn = false;
+				}
+			}
+		}
+	}
+	
+	public class LocationMenu {
+		public LocationMenu(Connection conn, Scanner scan) {
+			String choice;
+			boolean yn = true;
+			while(yn) {
+				for(int i=0; i<10; i++) System.out.println();
+				System.out.println("Location Menu");
+				System.out.println("1. Display");
+				System.out.println("2. Add New");
+				System.out.println("3. Update");
+				System.out.println("4. Delete");
+				System.out.println("5. Exit");
+				System.out.println();
+				System.out.print("Choice: ");
+				choice = scan.nextLine();
+				if(choice.equals("1")) {
+					new LocationDisplay(conn, scan);
+				} else if(choice.equals("2")) {
+					new LocationAddNew(conn, scan);
+				} else if(choice.equals("3")) {
+					new LocationUpdate(conn, scan);
+				} else if(choice.equals("4")) {
+					new LocationDelete(conn, scan);
+				} else if(choice.equals("5")) {
+					yn = false;
+				}
+			}
+
+		}
+	}
+	
+	public class ContactMenu {
+		public ContactMenu(Connection conn, Scanner scan) {
+			String choice;
+			boolean yn = true;
+			while(yn) {
+				for(int i=0; i<10; i++) System.out.println();
+				System.out.println("Contact Menu");
+				System.out.println("1. Display");
+				System.out.println("2. Add New");
+				System.out.println("3. Update");
+				System.out.println("4. Delete");
+				System.out.println("5. Exit");
+				System.out.println();
+				System.out.print("Choice: ");
+				choice = scan.nextLine();
+				if(choice.equals("1")) {
+					new ContactDisplay(conn, scan);
+				} else if(choice.equals("2")) {
+					new ContactAddNew(conn, scan);
+				} else if(choice.equals("3")) {
+					new ContactUpdate(conn, scan);
+				} else if(choice.equals("4")) {
+					new ContactDelete(conn, scan);
+				} else if(choice.equals("5")) {
+					yn = false;
+				}
+			}
+		}
+	}
+
+	public class CategoryDisplay {
+		public Statement stmt;
+		public ResultSet rs;
+		public ResultSetMetaData rsmd;
+		String temp="";
+		public CategoryDisplay(Connection conn, Scanner scan) {
+			try {
+				stmt = conn.createStatement();
+				rs = stmt.executeQuery("SELECT * FROM category");
+				rsmd = rs.getMetaData();
+				
+				for(int i=1; i<=rsmd.getColumnCount(); i++) {
+					if(i==rsmd.getColumnCount()) {
+						temp = temp + rsmd.getColumnName(i) + "     |";
+					}
+					else {
+						temp = temp + rsmd.getColumnName(i) + "     |     ";
+					}
+				}
+				
+				for(int i=1; i<=temp.length(); i++) {
+					System.out.print("-");
+				}
+				System.out.println();
+				
+				for(int i=1; i<=rsmd.getColumnCount(); i++) {
+					System.out.print(rsmd.getColumnName(i)+"\t");
+				}
+				System.out.println();
+				
+				for(int i=1; i<=temp.length(); i++) {
+					System.out.print("-");
+				}
+				System.out.println();
+				
+				while(rs.next()) {
+					for(int i=1; i<=rsmd.getColumnCount(); i++) {
+						System.out.print(rs.getString(i)+"\t");
+					}
+					System.out.println();
+					for(int i=1; i<=temp.length(); i++) {
+						System.out.print("-");
+					}
+					System.out.println();
+				}
+
+				System.out.println();
+				System.out.println("Press ENTER to display category menu");
+				scan.nextLine();
+			} catch(SQLException e) {
+			} catch(Exception e) {
+			} finally {
+				try {
+					stmt.close();
+				} catch(SQLException e) {
+				} catch(Exception e) {
+				}
+			}
+		}
+	}
+	
+	public class CategoryAddNew {
+		Statement stmt;
+		
+		public CategoryAddNew(Connection conn, Scanner scan) {
+				for(int i=0; i<10; i++) System.out.println();
+				System.out.println("Category Add");
+				System.out.println("");
+				System.out.print("Enter New Category ID: ");
+				String id = scan.nextLine();
+				System.out.print("Enter New Category name: ");
+				String name = scan.nextLine();
+				
+				try {
+					stmt = conn.createStatement();
+					int count = stmt.executeUpdate("INSERT INTO category VALUE("+id+",'"+name+"')");
+					if(count==0) {
+						System.out.println("There was an error!");
+						System.out.println("Press enter to proceed");
+						scan.nextLine();
+					}
+				} catch(SQLException e) {
+					
+				} finally {
+					try {
+						stmt.close();
+					} catch(SQLException e) {
+						
+					}
+				}
+		}
+	}
+	
+	public class CategoryUpdate{
+		Statement stmt;
+		
+		public CategoryUpdate(Connection conn, Scanner scan) {
+				for(int i=0; i<10; i++) System.out.println();
+				System.out.println("Category Update");
+				System.out.println("");
+				System.out.print("Enter Category ID to be updated: ");
+				String id = scan.nextLine();
+				System.out.print("Enter New name: ");
+				String name = scan.nextLine();
+				
+				try {
+					stmt = conn.createStatement();
+					StringBuffer St=new StringBuffer("UPDATE category SET cat_name=\""+name+"\" WHERE cat_id=\""+id+"\"");
+					System.out.println("ARGUMENT MADE : "+St.toString());
+					int count = stmt.executeUpdate(St.toString());
+					if(count==0) {
+						System.out.println("There was an error!");
+						System.out.println("Press enter to proceed");
+						scan.nextLine();
+					}
+					if(count>0) {
+						System.out.println("\nPASSED ARGUMENT SUCCESFULLy");
+					}
+				} catch(SQLException e) {
+					
+				} finally {
+					try {
+						stmt.close();
+					} catch(SQLException e) {
+						
+					}
+				}
+		}
+	}
+	
+	public class CategoryDelete{
+		Statement stmt;
+		
+		public CategoryDelete(Connection conn, Scanner scan) {
+			for(int i=0; i<10; i++) System.out.println();
+			System.out.println("Category Delete");
+			System.out.println("");
+			System.out.print("Enter cat_id to be Deleted: ");
+			String val = scan.nextLine();
+			
+			try {
+				stmt = conn.createStatement();
+				int count = stmt.executeUpdate("DELETE FROM category WHERE cat_id="+val);
+				if(count==0) {
+					System.out.println("There was an error!");
+					System.out.println("Press enter to proceed");
+					scan.nextLine();
+				}
+			} catch(SQLException e) {
+				
+			} finally {
+				try {
+					stmt.close();
+				} catch(SQLException e) {
+					
+				}
+			}
+		}
+	}
+	
+	public class LocationDisplay{
+		public Statement stmt;
+		public ResultSet rs;
+		public ResultSetMetaData rsmd;
+		String temp="";
+		public LocationDisplay(Connection conn, Scanner scan) {
+			try {
+				stmt = conn.createStatement();
+				rs = stmt.executeQuery("SELECT * FROM location1");
+				rsmd = rs.getMetaData();
+				
+				for(int i=1; i<=rsmd.getColumnCount(); i++) {
+					if(i==rsmd.getColumnCount()) {
+						temp = temp + rsmd.getColumnName(i) + "     |";
+					}
+					else {
+						temp = temp + rsmd.getColumnName(i) + "     |     ";
+					}
+				}
+				
+				for(int i=1; i<=temp.length(); i++) {
+					System.out.print("-");
+				}
+				System.out.println();
+				
+				for(int i=1; i<=rsmd.getColumnCount(); i++) {
+					System.out.print(rsmd.getColumnName(i)+"\t");
+				}
+				System.out.println();
+				
+				for(int i=1; i<=temp.length(); i++) {
+					System.out.print("-");
+				}
+				System.out.println();
+				
+				while(rs.next()) {
+					for(int i=1; i<=rsmd.getColumnCount(); i++) {
+						System.out.print(rs.getString(i)+"\t");
+					}
+					System.out.println();
+					for(int i=1; i<=temp.length(); i++) {
+						System.out.print("-");
+					}
+					System.out.println();
+				}
+
+
+				System.out.println();
+				System.out.println("Press ENTER to display location menu");
+				scan.nextLine();
+			} catch(SQLException e) {
+			} catch(Exception e) {
+			} finally {
+				try {
+					stmt.close();
+				} catch(SQLException e) {
+				} catch(Exception e) {
+				}
+			}
+		}
+	}
+	
+	public class LocationAddNew {
+		Statement stmt;
+		
+		public LocationAddNew(Connection conn, Scanner scan) {
+				for(int i=0; i<10; i++) System.out.println();
+				System.out.println("Location Add");
+				System.out.println("");
+				System.out.print("Enter New Location ID: ");
+				String id = scan.nextLine();
+				System.out.print("Enter New Location name: ");
+				String name = scan.nextLine();
+				
+				try {
+					stmt = conn.createStatement();
+					int count = stmt.executeUpdate("INSERT INTO location VALUE("+id+",'"+name+"')");
+					if(count==0) {
+						System.out.println("There was an error!");
+						System.out.println("Press enter to proceed");
+						scan.nextLine();
+					}
+				} catch(SQLException e) {
+					
+				} finally {
+					try {
+						stmt.close();
+					} catch(SQLException e) {
+						
+					}
+				}
+		}
+	}
+	
+	public class LocationUpdate{
+		Statement stmt;
+		
+		public LocationUpdate(Connection conn, Scanner scan) {
+				for(int i=0; i<10; i++) System.out.println();
+				System.out.println("Location Update");
+				System.out.println("");
+				System.out.print("Enter Location ID to be updated: ");
+				String id = scan.nextLine();
+				System.out.print("Enter New Location: ");
+				String name = scan.nextLine();
+				
+				try {
+					stmt = conn.createStatement();
+					StringBuffer St=new StringBuffer("UPDATE Location SET loc_name=\""+name+"\" WHERE loc"
+							+ "_id=\""+id+"\"");
+					System.out.println("ARGUMENT MADE : "+St.toString());
+					int count = stmt.executeUpdate(St.toString());
+					if(count==0) {
+						System.out.println("There was an error!");
+						System.out.println("Press enter to proceed");
+						scan.nextLine();
+					}
+					if(count>0) {
+						System.out.println("\nPASSED ARGUMENT SUCCESFULLY");
+					}
+				} catch(SQLException e) {
+					
+				} finally {
+					try {
+						stmt.close();
+					} catch(SQLException e) {
+						
+					}
+				}
+		}
+	}
+	
+	public class LocationDelete{
+		Statement stmt;
+		
+		public LocationDelete(Connection conn, Scanner scan) {
+			for(int i=0; i<10; i++) System.out.println();
+			System.out.println("Location Delete");
+			System.out.println("");
+			System.out.print("Enter loc_id to be Deleted: ");
+			String val = scan.nextLine();
+			
+			try {
+				stmt = conn.createStatement();
+				int count = stmt.executeUpdate("DELETE FROM location WHERE loc_id="+val);
+				if(count==0) {
+					System.out.println("There was an error!");
+					System.out.println("Press enter to proceed");
+					scan.nextLine();
+				}
+			} catch(SQLException e) {
+				
+			} finally {
+				try {
+					stmt.close();
+				} catch(SQLException e) {
+					
+				}
+			}
+		}
+	}
+	
+	public class ContactDisplay{
+		public Statement stmt;
+		public ResultSet rs;
+		public ResultSetMetaData rsmd;
+		String temp="";
+		public ContactDisplay(Connection conn, Scanner scan) {
+			try {
+				stmt = conn.createStatement();
+				rs = stmt.executeQuery("SELECT * FROM contact");
+				rsmd = rs.getMetaData();
+				
+				for(int i=1; i<=rsmd.getColumnCount(); i++) {
+					if(i==rsmd.getColumnCount()) {
+						temp = temp + rsmd.getColumnName(i) + "     |";
+					}
+					else {
+						temp = temp + rsmd.getColumnName(i) + "     |     ";
+					}
+				}
+				
+				for(int i=1; i<=temp.length(); i++) {
+					System.out.print("-");
+				}
+				System.out.println();
+				
+				for(int i=1; i<=rsmd.getColumnCount(); i++) {
+					System.out.print(rsmd.getColumnName(i)+"\t");
+				}
+				System.out.println();
+				
+				for(int i=1; i<=temp.length(); i++) {
+					System.out.print("-");
+				}
+				System.out.println();
+				
+				while(rs.next()) {
+					for(int i=1; i<=rsmd.getColumnCount(); i++) {
+						System.out.print(rs.getString(i)+"\t");
+					}
+					System.out.println();
+					for(int i=1; i<=temp.length(); i++) {
+						System.out.print("-");
+					}
+					System.out.println();
+				}
+
+
+				System.out.println();
+				System.out.println("Press ENTER to display contact menu");
+				scan.nextLine();
+			} catch(SQLException e) {
+			} catch(Exception e) {
+			} finally {
+				try {
+					stmt.close();
+				} catch(SQLException e) {
+				} catch(Exception e) {
+				}
+			}
+		}
+	}
+	
+	public class ContactAddNew {
+		Statement stmt;
+		
+		public ContactAddNew(Connection conn, Scanner scan) {
+				for(int i=0; i<10; i++) System.out.println();
+				System.out.println("Contact Add");
+				System.out.println("");
+				System.out.println("Type NULL for empty/invalid/not available inputs");
+				System.out.print("Enter New Contact ID: ");
+				String id = scan.nextLine();
+				System.out.print("Enter New Contact name: ");
+				String name = scan.nextLine();
+				System.out.print("Enter Gender: ");
+				String gender = scan.nextLine();
+				System.out.print("Enter cat_id: ");
+				String cat_id = scan.nextLine();
+				System.out.print("Enter loc_id: ");
+				String loc_id = scan.nextLine();
+				System.out.print("Enter Address: ");
+				String address = scan.nextLine();
+				System.out.print("Enter Pincode: ");
+				String pincode = scan.nextLine();
+				System.out.print("Enter email id 1: ");
+				String e_id1 = scan.nextLine();
+				System.out.print("Enter email id 2: ");
+				String e_id2 = scan.nextLine();
+				System.out.print("Enter Mobile Number 1: ");
+				String mob1 = scan.nextLine();
+				System.out.print("Enter Mobile Number 2: ");
+				String mob2 = scan.nextLine();
+				
+				try {
+					stmt = conn.createStatement();
+					int count = stmt.executeUpdate("INSERT INTO contact VALUE(" +id+ ",'" +name+ "'" + "," + "'" +gender+ 
+							"'" + "," +cat_id+ "," +loc_id+ "," + "'" +address+ "'" + "," + "'" +pincode+ "'" + "," + "'"
+							+e_id1+ "'" + "," + "'" +e_id2+ "'" + "," + "'" +mob1+ "'" + "," + "'" +mob2+ "'" + ")");
+					if(count==0) {
+						System.out.println("There was an error!");
+						System.out.println("Press enter to proceed");
+						scan.nextLine();
+					}
+				} catch(SQLException e) {
+					
+				} finally {
+					try {
+						stmt.close();
+					} catch(SQLException e) {
+						
+					}
+				}
+		}
+	}
+	
+	public class ContactUpdate{
+		Statement stmt;
+		
+		public ContactUpdate(Connection conn, Scanner scan) {
+				for(int i=0; i<10; i++) System.out.println();
+				System.out.println("Contact Update");
+				System.out.println("");
+				System.out.print("Enter Contact ID to be updated: ");
+				String id = scan.nextLine();
+				System.out.print("Enter New Mobile Number : ");
+				String num = scan.nextLine();
+				
+				try {
+					stmt = conn.createStatement();
+					StringBuffer St=new StringBuffer("UPDATE Contact SET mobile_no1=\""+num+"\" WHERE con"
+							+ "_id=\""+id+"\"");
+					System.out.println("ARGUMENT MADE : "+St.toString());
+					int count = stmt.executeUpdate(St.toString());
+					if(count==0) {
+						System.out.println("There was an error!");
+						System.out.println("Press enter to proceed");
+						scan.nextLine();
+					}
+					if(count>0) {
+						System.out.println("\nPASSED ARGUMENT SUCCESFULLY");
+					}
+				} catch(SQLException e) {
+					
+				} finally {
+					try {
+						stmt.close();
+					} catch(SQLException e) {
+						
+					}
+				}
+		}
+	}
+	
+	public class ContactDelete{
+		Statement stmt;
+		
+		public ContactDelete(Connection conn, Scanner scan) {
+			for(int i=0; i<10; i++) System.out.println();
+			System.out.println("Contact Delete");
+			System.out.println("");
+			System.out.print("Enter con_id to be Deleted: ");
+			String val = scan.nextLine();
+			
+			try {
+				stmt = conn.createStatement();
+				int count = stmt.executeUpdate("DELETE FROM contact WHERE con_id="+val);
+				if(count==0) {
+					System.out.println("There was an error!");
+					System.out.println("Press enter to proceed");
+					scan.nextLine();
+				}
+			} catch(SQLException e) {
+				
+			} finally {
+				try {
+					stmt.close();
+				} catch(SQLException e) {
+					
+				}
+			}
+		}
+	}
+	
+	public static void main(String[] args) {
+		new Contact();
+	}
+}
