@@ -1,0 +1,22 @@
+1) Make sure the xampp or the mysql server is running well with the port 3306.
+
+2) Else Install xampp and configure path of the my sql.
+
+3) Try to open mysql from the xampp control panel, If it shows an error is must have be the error of port as the port 3306 port might have been in use in somedifferent job. If that is so then,
+3.1)Open CMD as administrator. 
+3.2)RUn the command "netstat -ano" without quotation mark.
+3.3)There is chance you will find the port number 3306 in first few lines only else you might have to go for more search.
+3.4)Note the PID you will found along the line of the port number.
+3.5)use the command "taskkill /PID /F /T (the PID you have noted)"
+3.6)Now you are free to run again the mysql from xampp control panel.
+
+4)In Contact Manager folder there is src package in there you have 2 things to do. 
+4.1)In src package you have to run cmd at that path.
+4.2)Run the command "mysql -uroot" without quotation mark.
+4.3)In Sql terminal run "SOURCE contactdbT0.sql" command without quotation mark.
+4.4)Now you have the database on your root account.
+
+5)Now if you are not at the src package, i request you to go to that path and open a cmd in that path.
+
+6)Now as you are in src package and sql is running properly and now you can run the program using the command "java -cp (full path of the sql-connector which is present inside contactmanager folder) DBTEST.java"
+without quotation mark.
